@@ -29,6 +29,7 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         data()  {
             return {
@@ -59,8 +60,11 @@
                         age : '27',
                         job : 'Developer'
                     },
-                ]
+                ],
             }
+        },
+        mounted : function () {
+            axios.get('http://api.open-notify.org/astros.json').then(res => console.log(res));
         },
     }
 </script>
