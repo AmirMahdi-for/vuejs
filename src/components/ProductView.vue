@@ -37,6 +37,33 @@
         <div v-else>
             Loading
         </div>
+        <br>
+        <!--  -->
+        <form>
+            <label for="product">Name Product: </label>
+            <input type="text" id="product" v-model="product">
+
+            <label for="price">Price: </label>
+            <input type="number" id="price" v-model="price">
+
+            <label for="discount">Discount: </label>
+            <input type="number" id="discount" v-model="discount">
+
+            <label for="number">Number: </label>
+            <input type="number" id="number" v-model="number">
+        </form>
+        <hr>
+        <div>
+            <p><b> Product: </b><span> {{ product }} </span></p>
+
+            <p><b> First Price: </b><span> {{ price }} </span></p>
+
+            <p><b> Price with discount: </b><span> {{ price - (discount * price / 100) }} </span></p>
+
+            <p><b> Your Price: </b><span> {{ number * (price - (discount * price / 100)) }} </span></p>
+        </div>
+        <br>
+        <!--  -->
     </div>
 </template>
 
@@ -77,6 +104,10 @@
                     },
                 ],
                 list : [],
+                product : null,
+                price : 0,
+                discount : 0,
+                number : 0
             }
         },
         mounted : function () {
