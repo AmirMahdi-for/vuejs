@@ -38,7 +38,7 @@
             Loading
         </div>
         <br>
-        <!-- LEARN COMPUTED -->
+        <!-- LEARN COMPUTED AND COMPUTED -->
         <form>
             <label for="product">Name Product: </label>
             <input type="text" id="product" v-model="product">
@@ -56,11 +56,11 @@
         <div>
             <p><b> Product: </b><span> {{ product }} </span></p>
 
-            <p><b> First Price: </b><span> {{ price }} </span></p>
+            <p><b> First Price: </b><span> {{ price | toman }} </span></p>
 
-            <p><b> Price with discount: </b><span> {{ cost }} </span></p>
+            <p><b> Price with discount: </b><span> {{ cost | toman }} </span></p>
 
-            <p><b> Your Price: </b><span> {{ payable }} </span></p>
+            <p><b> Your Price: </b><span> {{ payable | toman }} </span></p>
         </div>
         <br>
         <!--  -->
@@ -78,6 +78,13 @@
                 return this.number * this.cost
             },
         },
+
+        filters : {
+            toman : function(value){
+                return value != 0 ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "T" : value;
+            },
+        },
+
         data()  {
             return {
                 message : 'HelloVueJs',
@@ -115,9 +122,10 @@
                 product : null,
                 price : 0,
                 discount : 0,
-                number : 0
+                number : 1
             }
         },
+        
         mounted : function () {
             axios.get('http://api.open-notify.org/astros.json').then(res => this.list = res.data.people);
         },
