@@ -38,7 +38,7 @@
             Loading
         </div>
         <br>
-        <!--  -->
+        <!-- LEARN COMPUTED -->
         <form>
             <label for="product">Name Product: </label>
             <input type="text" id="product" v-model="product">
@@ -58,9 +58,9 @@
 
             <p><b> First Price: </b><span> {{ price }} </span></p>
 
-            <p><b> Price with discount: </b><span> {{ price - (discount * price / 100) }} </span></p>
+            <p><b> Price with discount: </b><span> {{ cost }} </span></p>
 
-            <p><b> Your Price: </b><span> {{ number * (price - (discount * price / 100)) }} </span></p>
+            <p><b> Your Price: </b><span> {{ payable }} </span></p>
         </div>
         <br>
         <!--  -->
@@ -70,6 +70,14 @@
 <script>
     import axios from 'axios';
     export default {
+        computed : {
+            cost : function() {
+                return this.price - (this.discount * this.price / 100)
+            },
+            payable : function() {
+                return this.number * this.cost
+            },
+        },
         data()  {
             return {
                 message : 'HelloVueJs',
