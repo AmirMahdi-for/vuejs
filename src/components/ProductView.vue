@@ -28,7 +28,7 @@
         </table>
         <br>
         <!-- LEARN V-IF -->
-        <div v-if="list.length > 0">
+        <div v-if="list.length < 0">
             <div v-for="person in list" :key="person.name">
                 <h2> {{ person.name }} </h2>
                 <p>craft : <span>{{person.craft}}</span></p>
@@ -38,7 +38,7 @@
             Loading
         </div>
         <br>
-        <!-- LEARN COMPUTED AND COMPUTED -->
+        <!-- LEARN COMPUTED AND FILTER -->
         <form>
             <label for="product">Name Product: </label>
             <input type="text" id="product" v-model="product">
@@ -52,18 +52,63 @@
             <label for="number">Number: </label>
             <input type="number" id="number" v-model="number">
         </form>
-        <hr>
+        
         <div>
             <p><b> Product: </b><span> {{ product }} </span></p>
-
+            
             <p><b> First Price: </b><span> {{ price | toman }} </span></p>
-
-            <p><b> Price with discount: </b><span> {{ cost | toman }} </span></p>
-
+            
+            <p><b> Price with discount: </b><span> {{ cost }} </span></p>
+            
             <p><b> Your Price: </b><span> {{ payable | toman }} </span></p>
         </div>
         <br>
         <!--  -->
+        <hr>
+        <div class="container py-4">
+            <form class="row">
+                
+                <div class="col-md-3">
+                    <label for="product">Name Product: </label>
+                    <input type="text" class="form-control" id="product" v-model="product">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="price">Price: </label>
+                    <input type="number" class="form-control" id="price" v-model="price">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="discount">Discount: </label>
+                    <input type="number" class="form-control" id="discount" v-model="discount">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="number">Number: </label>
+                    <input type="number" class="form-control" id="number" v-model="number">
+                </div>
+
+            </form>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> product </th>
+                        <th> first price </th>
+                        <th> price with discount </th>
+                        <th> your price </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> {{ product }} </td>
+                        <td> {{ price | toman }} </td>
+                        <td> {{ cost }} </td>
+                        <td> {{ payable | toman }} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -118,14 +163,16 @@
                         job : 'Developer'
                     },
                 ],
+
                 list : [],
+
                 product : null,
                 price : 0,
                 discount : 0,
                 number : 1
             }
         },
-        
+
         mounted : function () {
             axios.get('http://api.open-notify.org/astros.json').then(res => this.list = res.data.people);
         },
