@@ -72,6 +72,7 @@
             <table class="table mt-4">
                 <thead>
                     <tr>
+                        <th> id </th>
                         <th> name </th>
                         <th> first price </th>
                         <th> price with discount </th>
@@ -79,11 +80,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="p in products" :key="p.name">
+                    <tr v-for="p, i in products" :key="p.name">
+                        <td> {{ i+1 }} </td>
                         <td> {{ p.name }} </td>
                         <td> {{ p.price }} </td>
-                        <td> {{ cost }} </td>
-                        <td> {{ payable }} </td>
+                        <td> {{ cost(p.price, p.discount) }} </td>
+                        <td> {{ cost(p.price, p.discount) * p.number }} </td>
+                    </tr>
+                    <tr v-for="product in products" :key="product.name">
+                        <td align="center" colspan="3"> Sum of Price </td>
+                        <td align="center" colspan="2"> {{ product.sum }} </td>
                     </tr>
                 </tbody>
             </table>
@@ -95,12 +101,12 @@
     import axios from 'axios';
     export default {
         computed : {
-            cost : function() {
-                return this.products.price - (this.products.discount * this.products.price / 100)
-            },
-            payable : function() {
-                return this.products.number * this.cost
-            },
+            // cost : function() {
+            //     return this.products.price - (this.products.discount * this.products.price / 100)
+            // },
+            // payable : function() {
+            //     return this.products.number * this.cost
+            // },
         },
 
         methods : {
@@ -113,6 +119,9 @@
                         number : 1 
                     }
                 )
+            },
+            cost : function(price, discount) {
+                return price - (discount * price / 100)
             },
         },
 
@@ -165,14 +174,15 @@
                         name : null,
                         price : 0,
                         discount : 0,
-                        number : 1
+                        number : 1,
+                        sum : 0,
                     }
                 ]
             }
         },
 
         mounted : function () {
-            axios.get('http://api.open-notify.org/astros.json').then(res => this.list = res.data.people);
+            axios.get('http://api.open-notify.org/astros.json').then(res => this.list = res.data.people)
         },
     }
 </script>
