@@ -39,7 +39,7 @@
         </div>
         <br>
         <!-- LEARN COMPUTED AND FILTER -->
-        <form>
+        <!-- <form>
             <label for="product">Name Product: </label>
             <input type="text" id="product" v-model="product">
 
@@ -52,7 +52,7 @@
             <label for="number">Number: </label>
             <input type="number" id="number" v-model="number">
         </form>
-        
+
         <div>
             <p><b> Product: </b><span> {{ product }} </span></p>
             
@@ -62,30 +62,34 @@
             
             <p><b> Your Price: </b><span> {{ payable | toman }} </span></p>
         </div>
-        <br>
+        <br> -->
         <!--  -->
         <hr>
         <div class="container py-4">
-            <form class="row">
+
+            <div class="">
+                <button type="button" class="btn btn-info btn-sm"> new item + </button>
+            </div>
+            <form class="row" v-for="p in products" :key="p.name"> 
                 
                 <div class="col-md-3">
                     <label for="product">Name Product: </label>
-                    <input type="text" class="form-control" id="product" v-model="product">
+                    <input type="text" class="form-control" id="product" v-model="p.name">
                 </div>
 
                 <div class="col-md-3">
                     <label for="price">Price: </label>
-                    <input type="number" class="form-control" id="price" v-model="price">
+                    <input type="number" class="form-control" id="price" v-model="p.price">
                 </div>
 
                 <div class="col-md-3">
                     <label for="discount">Discount: </label>
-                    <input type="number" class="form-control" id="discount" v-model="discount">
+                    <input type="number" class="form-control" id="discount" v-model="p.discount">
                 </div>
 
                 <div class="col-md-3">
                     <label for="number">Number: </label>
-                    <input type="number" class="form-control" id="number" v-model="number">
+                    <input type="number" class="form-control" id="number" v-model="p.number">
                 </div>
 
             </form>
@@ -93,7 +97,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th> product </th>
+                        <th> name </th>
                         <th> first price </th>
                         <th> price with discount </th>
                         <th> your price </th>
@@ -101,7 +105,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td> {{ product }} </td>
+                        <td> {{ name }} </td>
                         <td> {{ price | toman }} </td>
                         <td> {{ cost }} </td>
                         <td> {{ payable | toman }} </td>
@@ -166,10 +170,19 @@
 
                 list : [],
 
-                product : null,
-                price : 0,
-                discount : 0,
-                number : 1
+                // product : null,
+                // price : 0,
+                // discount : 0,
+                // number : 1,
+
+                products : [
+                    {
+                        name : null,
+                        price : 0,
+                        discount : 0,
+                        number : 1
+                    }
+                ]
             }
         },
 
