@@ -39,36 +39,11 @@
         </div>
         <br>
         <!-- LEARN COMPUTED AND FILTER -->
-        <!-- <form>
-            <label for="product">Name Product: </label>
-            <input type="text" id="product" v-model="product">
-
-            <label for="price">Price: </label>
-            <input type="number" id="price" v-model="price">
-
-            <label for="discount">Discount: </label>
-            <input type="number" id="discount" v-model="discount">
-
-            <label for="number">Number: </label>
-            <input type="number" id="number" v-model="number">
-        </form>
-
-        <div>
-            <p><b> Product: </b><span> {{ product }} </span></p>
-            
-            <p><b> First Price: </b><span> {{ price | toman }} </span></p>
-            
-            <p><b> Price with discount: </b><span> {{ cost }} </span></p>
-            
-            <p><b> Your Price: </b><span> {{ payable | toman }} </span></p>
-        </div>
-        <br> -->
-        <!--  -->
         <hr>
         <div class="container py-4">
 
             <div class="">
-                <button type="button" class="btn btn-info btn-sm"> new item + </button>
+                <button type="button" class="btn btn-info btn-sm" @click="newProduct"> new item + </button>
             </div>
             <form class="row" v-for="p in products" :key="p.name"> 
                 
@@ -94,7 +69,7 @@
 
             </form>
 
-            <table class="table">
+            <table class="table mt-4">
                 <thead>
                     <tr>
                         <th> name </th>
@@ -104,11 +79,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td> {{ name }} </td>
-                        <td> {{ price | toman }} </td>
+                    <tr v-for="p in products" :key="p.name">
+                        <td> {{ p.name }} </td>
+                        <td> {{ p.price }} </td>
                         <td> {{ cost }} </td>
-                        <td> {{ payable | toman }} </td>
+                        <td> {{ payable }} </td>
                     </tr>
                 </tbody>
             </table>
@@ -121,18 +96,31 @@
     export default {
         computed : {
             cost : function() {
-                return this.price - (this.discount * this.price / 100)
+                return this.products.price - (this.products.discount * this.products.price / 100)
             },
             payable : function() {
-                return this.number * this.cost
+                return this.products.number * this.cost
             },
         },
 
-        filters : {
-            toman : function(value){
-                return value != 0 ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "T" : value;
+        methods : {
+            newProduct : function() {
+                this.products.push(
+                    {
+                        name : null,
+                        price : 0,
+                        discount : 0,
+                        number : 1 
+                    }
+                )
             },
         },
+
+        // filters : {
+        //     toman : function(value){
+        //         return value != 0 ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "T" : value;
+        //     },
+        // },
 
         data()  {
             return {
@@ -170,10 +158,7 @@
 
                 list : [],
 
-                // product : null,
-                // price : 0,
-                // discount : 0,
-                // number : 1,
+
 
                 products : [
                     {

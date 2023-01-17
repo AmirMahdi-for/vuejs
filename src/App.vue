@@ -1,8 +1,9 @@
 <template>
     <div>
-        <product-view></product-view>
+        <ProductView></ProductView>
         <hr>
         <h2>THIS IS App.vue</h2>
+
     </div>
 </template>
 
