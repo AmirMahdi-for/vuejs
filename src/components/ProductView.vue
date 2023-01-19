@@ -89,7 +89,7 @@
                     </tr>
                     <tr v-for="product in products" :key="product.name">
                         <td align="center" colspan="3"> Sum of Price </td>
-                        <td align="center" colspan="2"> {{ product.sum }} </td>
+                        <td align="center" colspan="2"> {{ sumPrice }} </td>
                     </tr>
                 </tbody>
             </table>
@@ -123,6 +123,17 @@
             cost : function(price, discount) {
                 return price - (discount * price / 100)
             },
+            sumPrice : function() {
+                // eslint-disable-next-line no-unused-vars
+                let products = this.products
+                // eslint-disable-next-line no-unused-vars
+                let sum  = 0;
+                for (var i = 0; i < products.length; i++){
+                    // eslint-disable-next-line no-unused-vars
+                    sum += this.cost(products[i].price, products[i].discount) * products[i].number;
+                }
+                return sum;
+            }
         },
 
         // filters : {
