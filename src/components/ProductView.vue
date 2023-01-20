@@ -45,26 +45,30 @@
             <div class="">
                 <button type="button" class="btn btn-info btn-sm" @click="newProduct"> new item + </button>
             </div>
-            <form class="row" v-for="p in products" :key="p.name"> 
+            <form class="row" v-for="p, i in products" :key="p.name"> 
                 
                 <div class="col-md-3">
                     <label for="product">Name Product: </label>
                     <input type="text" class="form-control" id="product" v-model="p.name">
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="price">Price: </label>
                     <input type="number" class="form-control" id="price" v-model="p.price">
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="discount">Discount: </label>
                     <input type="number" class="form-control" id="discount" v-model="p.discount">
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="number">Number: </label>
                     <input type="number" class="form-control" id="number" v-model="p.number">
+                </div>
+
+                <div class="col-md-3 align-self-center">
+                    <button type="button" class="btn btn-danger btn-sm" @click="deleteProduct(i)">Delete item</button>
                 </div>
 
             </form>
@@ -110,6 +114,9 @@
         },
 
         methods : {
+            deleteProduct : function(index) {
+                this.products.splice(index, 1);
+            },
             newProduct : function() {
                 this.products.push(
                     {
