@@ -9,6 +9,17 @@
         <b>{{ value }}</b>
         <br><br>
         <button @click="changeValue()">CHANGE</button>
+        <hr>
+        <button @click="number++"> Add to Number </button>
+        <p>{{ number }}</p>
+        <p v-if="number < 10">
+            number less than 10
+            
+        </p>
+        <p v-else>
+            number more than 10
+        </p>
+        <h3 v-show="test">show this TAG</h3>
     </div>
 </template>
 
@@ -19,7 +30,9 @@
                 counter : 0,
                 link : "http://google.com",
                 title : "<h1>Google</h1>",
-                value : "this is new course"
+                value : "this is new course",
+                number : 0,
+                test : true
             }
         },
         methods : {
