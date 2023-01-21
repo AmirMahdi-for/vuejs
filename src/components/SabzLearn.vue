@@ -5,6 +5,10 @@
         <button @click="minesCounter"> mines to Counter </button><br>
         <a :href="link">ZZZZZZZZ</a>
         <div v-html="title"></div>
+        <input type="text" v-model="value">
+        <b>{{ value }}</b>
+        <br><br>
+        <button @click="changeValue()">CHANGE</button>
     </div>
 </template>
 
@@ -14,7 +18,8 @@
             return {
                 counter : 0,
                 link : "http://google.com",
-                title : "<h1>Google</h1>"
+                title : "<h1>Google</h1>",
+                value : "this is new course"
             }
         },
         methods : {
@@ -28,6 +33,9 @@
                 else{
                     this.counter--;
                 }
+            },
+            changeValue: function(){
+                this.value = 'Change IT'
             }
         }
     }
