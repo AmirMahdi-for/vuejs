@@ -35,6 +35,17 @@
             </li>
         </ul>
 
+        <hr>
+
+        <button @click="num1++">num1</button>
+        <button @click="num2++">num2</button>
+
+        <h3>{{num1}}</h3>
+        <h3>{{num2}}</h3>
+
+        <h2>{{addNum1}}</h2>
+        <h2>{{addNum2}}</h2>
+
     </div>
 </template>
 
@@ -54,7 +65,18 @@
                     lastName : 'amiri'
                 },
                 toDo : ['study', 'goOut', 'coding', 'smoking'],
-                newToDo : ''
+                newToDo : '',
+                num1 : 0,
+                num2 : 0,
+                ten : 10,
+            }
+        },
+        computed : {
+            addNum1: function (){
+                return this.num1 + this.ten
+            },
+            addNum2: function (){
+                return this.num2 + this.ten
             }
         },
         methods : {
