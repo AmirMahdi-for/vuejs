@@ -14,12 +14,17 @@
         <p>{{ number }}</p>
         <p v-if="number < 10">
             number less than 10
-            
         </p>
         <p v-else>
             number more than 10
         </p>
         <h3 v-show="test">show this TAG</h3>
+        <ul v-for="an, i in animals" :key="i">
+            <li>{{ i+1 }}. {{ an }}</li>
+        </ul>
+        <ul v-for="person, i, id in people" :key="i">
+            <li>{{id+1}}.{{i}} : {{person}}</li>
+        </ul>
     </div>
 </template>
 
@@ -32,7 +37,12 @@
                 title : "<h1>Google</h1>",
                 value : "this is new course",
                 number : 0,
-                test : true
+                test : true,
+                animals : ['lion', 'bird', 'elephant', 'tiger'],
+                people : {
+                    firstName : 'amirMahdi',
+                    lastName : 'amiri'
+                }
             }
         },
         methods : {
