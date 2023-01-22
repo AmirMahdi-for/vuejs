@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Counter : {{ counter }}</p>
+        <!-- <p>Counter : {{ counter }}</p>
         <button @click="addCounter"> Add to Counter </button>
         <button @click="minesCounter"> mines to Counter </button><br>
         <a :href="link">ZZZZZZZZ</a>
@@ -24,7 +24,17 @@
         </ul>
         <ul v-for="person, i, id in people" :key="i">
             <li>{{id+1}}.{{i}} : {{person}}</li>
+        </ul> -->
+        <input type="text" v-model="newToDo">
+        <button class="btn btn-success sm" @click="addTodo">add TODO</button>
+        <ul v-for="x, i in toDo" :key="i">
+            <li>
+                {{ x }}
+                <br>
+                <button class="btn btn-danger sm" @click="removeTodo(i)">remove TODO</button>
+            </li>
         </ul>
+
     </div>
 </template>
 
@@ -42,10 +52,23 @@
                 people : {
                     firstName : 'amirMahdi',
                     lastName : 'amiri'
-                }
+                },
+                toDo : ['study', 'goOut', 'coding', 'smoking'],
+                newToDo : ''
             }
         },
         methods : {
+            addTodo: function(){
+                if (this.newToDo == '')  {
+                    alert('please add to todo')
+                }
+                else {
+                    this.toDo.push(this.newToDo);
+                }
+            },
+            removeTodo: function(i){
+                this.toDo.shift(this.toDo[i])
+            },
             addCounter : function() {
                 this.counter++;
             },
