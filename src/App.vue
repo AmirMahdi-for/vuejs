@@ -1,8 +1,6 @@
 <template>
     <div>
-        <!-- <ProductView></ProductView> -->
-        <!-- <FormList></FormList> -->
-        <SabzLearn></SabzLearn>
+        <user></user>
         <hr>
         <h2>THIS IS App.vue</h2>
 
@@ -12,17 +10,11 @@
 <script>
 
 // eslint-disable-next-line no-unused-vars
-import ProductView from './components/ProductView.vue';
-// eslint-disable-next-line no-unused-vars
-import FormList from './components/FormList.vue';
-// eslint-disable-next-line no-unused-vars
-import SabzLearn from './components/SabzLearn.vue';
+import user from './components/UserPro.vue';
 
 export default {
     components : {
-        // ProductView,
-        // FormList,
-        SabzLearn,
+        user,
     },
 }
 </script>
