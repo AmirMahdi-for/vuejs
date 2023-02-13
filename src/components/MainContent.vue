@@ -113,6 +113,7 @@
 
     .comments{
         display: flex;
+        justify-content: center;
         
     }
 
@@ -120,6 +121,9 @@
         background-color: #fff;
         border-radius: 0.5rem;
         margin: 1rem;
+        flex-basis: 20rem;
+        min-height: 18rem;
+        
     }
 
     .comment__body {
@@ -159,6 +163,7 @@
     .works{
         text-align: center;
         margin-top: 5rem;
+        margin-bottom: 5rem;
     }
 
     .works-content{
