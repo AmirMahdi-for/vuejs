@@ -105,7 +105,29 @@
                 </div>
             </div>
         </section>
-        
+
+        <div class="portfolio">
+            <div class="portfolio__title">
+                <h4>PORTFOLIO</h4>
+            </div>
+            <div class="portfolio__text">
+                <h1>Three Simple Step To Started Working Process</h1>
+            </div>
+            <div class="portfolio__img">
+                <div class="portfolio__img_1">
+                    <img :src="require('/public/images/portfolio-1.jpg')" alt="LogO" class="portfolio__images">
+                    <img :src="require('/public/images/portfolio-2.jpg')" alt="LogO" class="portfolio__images">
+                    <img :src="require('/public/images/portfolio-3.jpg')" alt="LogO" class="portfolio__images">
+                    
+                </div>
+                <div class="portfolio__img_2">
+                    <img :src="require('/public/images/portfolio-4.jpg')" alt="LogO" class="portfolio__images">
+                    <img :src="require('/public/images/portfolio-5.jpg')" alt="LogO" class="portfolio__images">
+                    <img :src="require('/public/images/portfolio-6.jpg')" alt="LogO" class="portfolio__images">
+                </div>
+            </div>
+        </div>
+
     </main>
 </template>
 
@@ -114,6 +136,25 @@
 </script>
 
 <style>
+    /* ------------------- PORTFOLIO --------------------*/
+    .portfolio{
+        text-align: center;
+    }
+
+    .portfolio__title{
+        color: #6c7890;
+        margin: 2rem auto;
+
+    }
+
+    .portfolio__text{
+        margin: 1rem auto;
+    }
+
+    .portfolio__images{
+        margin: 1rem 3.5rem;
+        max-width: 65rem;
+    }
     /* ------------person comments section --------------*/
     .person-comments{
         background-color: #2f5bea;
