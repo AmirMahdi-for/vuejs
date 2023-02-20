@@ -53,49 +53,59 @@
                 <p class="person-comments__text">
                     There are many variations of passages of lorem ipsum available, but the majority have suffered.
                 </p>
+
+                <div class="comments-container">
+                    <div class="comments">
+                        <div class="comment">
+                            <div class="comment__content">
+                                <p class="comment__body">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
+                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
+                                </p>
+                            </div>
+                            <div class="comment__info">
+                                <img :src="require('/public/images/person-1.png')" alt="" class="comment__img">
+                                <p class="comment__person">Martin Jones, Product Manager</p>
+                            </div>
+                        </div>
     
-                <div class="comments">
-                    <div class="comment">
-                        <div class="comment__content">
-                            <p class="comment__body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
-                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
-                            </p>
+                        <div class="comment">
+                            <div class="comment__content">
+                                <p class="comment__body">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
+                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
+                                </p>
+                            </div>
+                            <div class="comment__info">
+                                <img :src="require('/public/images/person-2.png')" alt="" class="comment__img">
+                                <p class="comment__person">Martin Jones, Product Manager</p>
+                            </div>
                         </div>
-                        <div class="comment__info">
-                            <img :src="require('/public/images/person-1.png')" alt="" class="comment__img">
-                            <p class="comment__person">Martin Jones, Product Manager</p>
+    
+                        <div class="comment">
+                            <div class="comment__content">
+                                <p class="comment__body">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
+                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
+                                </p>
+                            </div>
+                            <div class="comment__info">
+                                <img :src="require('/public/images/person-3.png')" alt="" class="comment__img">
+                                <p class="comment__person">Martin Jones, Product Manager</p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="comment">
-                        <div class="comment__content">
-                            <p class="comment__body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
-                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
-                            </p>
-                        </div>
-                        <div class="comment__info">
-                            <img :src="require('/public/images/person-2.png')" alt="" class="comment__img">
-                            <p class="comment__person">Martin Jones, Product Manager</p>
-                        </div>
-                    </div>
-
-                    <div class="comment">
-                        <div class="comment__content">
-                            <p class="comment__body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
-                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam accusantium nulla eaque ut cumque nesciunt id velit.
-                            </p>
-                        </div>
-                        <div class="comment__info">
-                            <img :src="require('/public/images/person-3.png')" alt="" class="comment__img">
-                            <p class="comment__person">Martin Jones, Product Manager</p>
-                        </div>
+                    <div class="companies">
+                        <img :src="require('/public/images/logo-1.svg')" alt="LoGo" class="companies__img">
+                        <img :src="require('/public/images/logo-2.svg')" alt="LoGo" class="companies__img">
+                        <img :src="require('/public/images/logo-3.svg')" alt="LoGo" class="companies__img">
+                        <img :src="require('/public/images/logo-4.svg')" alt="LoGo" class="companies__img">
+                        <img :src="require('/public/images/logo-5.svg')" alt="LoGo" class="companies__img">
                     </div>
                 </div>
             </div>
         </section>
+        
     </main>
 </template>
 
@@ -113,7 +123,7 @@
 
     .comments{
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         
     }
 
@@ -126,6 +136,11 @@
         
     }
 
+    .comments_container{
+        max-width: 65rem;
+        margin: 3.5rem;
+    }
+
     .comment__body {
         font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         color: #7e8085;
@@ -136,6 +151,17 @@
     .comment__content{
         text-align: left;
         padding: 1.2rem;
+    }
+
+    .companies{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .companies__img{
+        display: block;
+        margin: 2rem;
     }
 
     .comment__info{
